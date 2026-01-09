@@ -1,0 +1,259 @@
+/* =========================
+   BASE SECTION
+========================= */
+.contact-section {
+  position: relative;
+  padding: 120px 20px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(99, 102, 241, 0.12), transparent 45%),
+    #020617;
+  overflow: hidden;
+  color: #e5e7eb;
+}
+
+/* =========================
+   FLOATING BLOBS (SUBTLE)
+========================= */
+.glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  filter: blur(140px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: slowFloat 16s ease-in-out infinite;
+}
+
+.glow-blue {
+  background: #38bdf8;
+  top: -120px;
+  left: -120px;
+}
+
+.glow-purple {
+  background: #6366f1;
+  bottom: -140px;
+  right: -140px;
+  animation-delay: 6s;
+}
+
+/* =========================
+   WRAPPER & TEXT
+========================= */
+.contact-wrapper {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+.contact-subtitle {
+  font-size: 16px;
+  color: #94a3b8;
+  margin-bottom: 65px;
+  line-height: 1.6;
+}
+
+/* =========================
+   CONTACT CARD
+========================= */
+.contact-card {
+  position: relative;
+  padding: 44px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(2, 6, 23, 0.95)
+  );
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 1px rgba(148, 163, 184, 0.08);
+  backdrop-filter: blur(14px);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* Soft lift on hover */
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 55px 130px rgba(0, 0, 0, 0.95),
+    inset 0 0 0 1px rgba(56, 189, 248, 0.25);
+}
+
+/* =========================
+   ANIMATED BORDER (CLEAN)
+========================= */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.2px;
+  border-radius: 24px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56, 189, 248, 0.9),
+    rgba(99, 102, 241, 0.9),
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  animation: borderFlow 8s linear infinite;
+}
+
+/* =========================
+   HEADER
+========================= */
+.card-header h3 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.card-header span {
+  font-size: 14px;
+  color: #38bdf8;
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   DETAILS
+========================= */
+.contact-details {
+  margin: 34px 0;
+}
+
+.contact-details a,
+.contact-details p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #cbd5f5;
+  margin-bottom: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-details a:hover {
+  color: #38bdf8;
+  transform: translateX(4px);
+}
+
+.icon {
+  font-size: 17px;
+  opacity: 0.9;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.contact-actions a {
+  position: relative;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  background: linear-gradient(
+    180deg,
+    #1e293b,
+    #0f172a
+  );
+  color: #e5e7eb;
+  transition: all 0.35s ease;
+}
+
+/* Glow on hover */
+.contact-actions a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: #38bdf8;
+  opacity: 0;
+  filter: blur(14px);
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
+.contact-actions a:hover {
+  transform: translateY(-4px);
+  color: #020617;
+  background: #38bdf8;
+}
+
+.contact-actions a:hover::after {
+  opacity: 0.6;
+}
+
+/* Primary Button */
+.contact-actions .highlight {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: #020617;
+  font-weight: 600;
+}
+
+.contact-actions .highlight::after {
+  background: #6366f1;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes slowFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(45px);
+  }
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 640px) {
+  .contact-title {
+    font-size: 34px;
+  }
+
+  .contact-card {
+    padding: 32px 22px;
+  }
+
+  .card-header h3 {
+    font-size: 24px;
+  }
+}

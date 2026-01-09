@@ -1,0 +1,204 @@
+/* =========================
+   SECTION
+========================= */
+.projects-section {
+  position: relative;
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.2), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(34, 211, 238, 0.2), transparent 45%),
+    #020617;
+  overflow: hidden;
+}
+
+/* =========================
+   TITLE
+========================= */
+.section-title {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 70px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* =========================
+   GRID
+========================= */
+.projects-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 36px;
+}
+
+/* =========================
+   CARD (NO FIXED HEIGHT!)
+========================= */
+.project-card {
+  position: relative;
+  min-height: 260px; /* base size only */
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(2, 6, 23, 0.95)
+  );
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(148, 163, 184, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+/* Hover zoom ONLY (no height animation) */
+.project-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow:
+    0 45px 120px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(56, 189, 248, 0.35);
+}
+
+/* =========================
+   ANIMATED BORDER (HOVER)
+========================= */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.2px;
+  border-radius: 22px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56, 189, 248, 0.9),
+    rgba(99, 102, 241, 0.9),
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   FRONT CONTENT
+========================= */
+.project-front {
+  padding: 34px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-front h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 12px;
+}
+
+.project-front p {
+  font-size: 15px;
+  color: #94a3b8;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.tech {
+  font-size: 13px;
+  font-weight: 600;
+  color: #38bdf8;
+  letter-spacing: 0.3px;
+}
+
+/* Fade front content on hover */
+.project-card:hover .project-front {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+/* =========================
+   HOVER CONTENT (FULLY VISIBLE)
+========================= */
+.project-hover {
+  position: absolute;
+  inset: 0;
+  padding: 36px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.98),
+    rgba(34, 211, 238, 0.98)
+  );
+  color: #020617;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* Reveal ALL content */
+.project-card:hover .project-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   HOVER TEXT
+========================= */
+.project-hover p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.project-hover ul {
+  padding-left: 18px;
+}
+
+.project-hover ul li {
+  font-size: 13px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* =========================
+   MOBILE (CLICK-FRIENDLY)
+========================= */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 34px;
+  }
+
+  .project-card {
+    transform: none;
+  }
+
+  .project-front {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .project-hover {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    margin-top: 20px;
+    border-radius: 0 0 22px 22px;
+  }
+}
